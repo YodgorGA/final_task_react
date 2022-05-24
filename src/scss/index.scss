@@ -1,0 +1,605 @@
+/*-----------------------ОБНУЛЕНИЕ-----------------------*/
+@import 'reset';
+/*-----------------------ШРИФТЫ-----------------------*/
+@import 'fonts';
+/*-----------------------ЦВЕТА-----------------------*/
+@import 'colors';
+/*-----------------------КЛАСС-ШАБЛОНЫ-----------------------*/
+@import 'placeholder-classes';
+/*-----------------------МИКСИНЫ-----------------------*/
+@import 'mixins';
+/*-----------------------INPUT-----------------------*/
+.input{
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 5px 10px;
+    @extend %text-input;
+
+    &-empty{
+        &_primary{
+            color:$label-text-color;
+            @extend %empty-hover;
+        }
+    }
+    &-hover{
+        &_primary{
+            @extend %hover-primary;
+        }
+        &_success{
+            @extend %hover-success;
+        }
+        &_error{
+            @extend %hover-error;
+        }
+    }
+    &-active{
+        &_primary{
+            @extend %active-primary;
+            
+        }
+        &_success{
+            @extend %active-success;
+        }
+        &_error{
+            @extend %active-error;
+        }
+    }
+    &-disabled{
+        &_primary{
+            @extend %disabled;
+        }
+    }
+}
+/*-----------------------TEXTAREA-----------------------*/
+.texarea{
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 5px 10px;
+
+    &-empty{
+        &_primary{
+            color:$label-text-color;
+            @extend %empty-hover;
+        }
+    }
+    &-hover{
+        &_primary{
+            @extend %hover-primary;
+        }
+        &_success{
+            @extend %hover-success;
+        }
+        &_error{
+            @extend %hover-error;
+        }
+    }
+    &-active{
+        &_primary{
+            @extend %active-primary;
+        }
+        &_success{
+            @extend %active-success;
+        }
+        &_error{
+            @extend %active-error;
+        }
+    }
+    &-disabled{
+        &_primary{
+            @extend %disabled;
+        }
+    }
+}
+/*-----------------------TASKDROPDOWN-----------------------*/
+.taskdropdown{
+    &-container{
+        width: 116px;
+        height: 97px;
+        display: flex;
+        flex-direction: column;
+        align-items:flex-end;
+        position: absolute;
+    }
+    &-icon{
+        width: 22px;
+        height: 22px;
+        color:$primary-color;
+        background-color:$primary-color;
+        padding-top: 5px;
+        padding-left: 6px;
+        border-radius:5px;
+        &_img{
+        }
+        &_container{
+            width: 22px;
+            height: 22px;
+        }
+    }
+    &-list{
+        @extend %text-input;
+        width: 116px;
+        font-size: 12px;
+        line-height: 116%;
+        align-self:flex-start;
+        box-shadow:0 0 2px 2px rgba(123, 97, 255, 0.5);
+        padding: 5px 4px;
+        border-radius:5px;
+        &_visible{
+            display: inline-block;
+            position: relative;
+            background: #FFFFFF;
+            z-index: 10;
+        }
+        &_hidden{
+            display: none;
+        }
+    }
+    &-item{
+        &:hover{
+            cursor: pointer;
+        }
+        &_delete{
+            color: $error-color;
+        }
+    }
+}
+/*-----------------------DROPDOWN-----------------------*/
+.dropdown{
+    @extend %text-input;
+    &_empty{
+        width: 100%;
+    }
+    &_hover{
+        width: 100%;
+    }
+    &_active{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding:5px;
+    }
+    &-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items:center;
+
+        &_active{
+            border: 1px solid $primary-color;
+            box-shadow: 0px 0px 2px 2px rgba(123, 97, 255, 0.5);
+            background: $white;
+            border-radius: 3px;
+            outline: none;
+            z-index: 10;
+
+            position: relative;
+        }
+    }
+    &-trigger{
+        @extend %text-input;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items:center;
+        height: 24px;
+        padding: 0px 10px;
+        &::after{
+            content:'˅';
+            font-size: 20px;
+            padding: 5px 0px 0px 0px ;
+        }
+        &_empty{
+            @extend %empty-hover;
+            color: $inner-shadow-color;
+        }
+        &_hover{
+            @extend %hover-primary;
+        }
+        &_active{
+            @extend %hover-primary;
+            &::after{
+                content:'^';
+                padding: 10px 0px 0px 0px ;
+            }
+        }
+    }
+    &-items{
+
+        &_container{
+            justify-self: flex-start;
+            align-self: flex-start;
+            @extend %text-input;
+            width: 100%;
+        }
+    }
+    &-item{
+        height: 20px;
+        padding-left: 5px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items:center;
+        cursor: pointer;
+        &_hidden{
+            display: none;
+        }
+        &_stayed{
+        }
+        &_hover{
+            background-color:#E6E1FF;
+        }
+        &_active{
+            // background-color:$primary-color;
+        }
+        &_checkbox{
+            height: 24px;
+            width: 24px;
+        }
+        &_content{
+            padding-top: 2px;
+            overflow: hidden;
+            flex-wrap: wrap;
+        }
+
+    }
+    
+
+}
+/*-----------------------CHECKBOX-----------------------*/
+.checkbox{
+    background-color: $white;
+    height: 16px;
+    width: 16px;
+    &_container{
+        background-color:inherit;
+    }
+    &_stayed{
+        border: 1px solid $text-color;
+        border-radius:5px;
+    }
+    &_hover{
+        border: 1px solid $primary-color;
+        border-radius:5px;
+    }
+    &_active{
+        border: 1px solid $primary-color;
+        background-color:$primary-color;
+        border-radius:5px;
+        display:flex;
+        flex-direction: row;
+        align-items:center;
+        justify-content: center;
+        &::before{
+            content:'X';
+            color:$white;
+            font-size: 12px;
+            padding-top: 2px;
+        }
+    }
+    &_disabled__filled{
+        border: 1px solid $inner-shadow-color;
+        border-radius:5px;
+        display:flex;
+        flex-direction: row;
+        align-items:center;
+        justify-content: center;
+        &::before{
+            content:'X';
+            color:$label-text-color;
+            font-size: 12px;
+            padding-top: 2px;
+        }
+    }
+    &_disabled__empty{
+        border-color: 1px solid $inner-shadow-color;
+        background-color:$inner-shadow-color;
+        border-radius:5px;
+    }
+} 
+/*-----------------------BUTTONS-----------------------*/
+.button{
+    height: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+    border-radius:5px;
+    @extend %text-regular;
+    color:$disabled-text-color;
+
+    &-default{
+        border: 1px solid $text-color;
+        &_stayed{
+            background-color: $disabled-text-color;
+        }
+        &_hovered{
+            background-color: #e1e1e1;
+        }
+        &_active{
+            background-color: #cfcfcf;
+        }
+    }
+    &-primary{
+        
+        &_stayed{
+            @include buttonColor($primary-color);
+        }
+        &_hovered{
+            @include buttonColor(#8A73FF);
+        }
+        &_active{
+            @include buttonColor(#715BE3);
+        }
+    }
+    &-success{
+        border: 1px solid $success-color;
+        &_stayed{
+            background-color: $success-color;
+        }
+        &_hovered{
+            @include buttonColor(#80F0A6);
+        }
+        &_active{
+            @include buttonColor(#4BD379);
+        }
+    }
+    &-error{
+        border: 1px solid $error-color;
+        &_stayed{
+            background-color: $error-color;
+        }
+        &_hovered{
+            @include buttonColor(#FF8080);
+        }
+        &_active{
+            @include buttonColor(#D65D5D);
+        }
+    }
+    &-disabled{
+        border: 1px solid $inner-shadow-color;
+        color:$label-text-color;
+        &_stayed{
+            background-color: $inner-shadow-color;
+        }
+        &_hovered{
+            background-color: $inner-shadow-color;
+        }
+        &_active{
+            background-color: $inner-shadow-color;
+        }
+    }
+}
+/*-----------------------PAGE-----------------------*/
+.page{
+    &-wrapper{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 810px;
+    }
+    &-header{
+        display: flex;
+        flex-direction: row;
+        align-items:center;
+        justify-content: flex-start;
+        height: 60px;
+        &_logo{
+            padding-left: 20px;
+        }
+    }
+    &-body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+        margin: auto;
+    }
+}
+/*-----------------------AUTHFORM-PAGE----------------------*/
+.authform{
+    width: 300px;
+    height: 290px;
+    display: flex;
+    flex-direction: column;
+    
+    align-items:center;
+
+    background-color: $white;
+    @extend %element-shadow;
+
+        &-content{
+            width: 240px;
+        }
+        &-head{
+            display: flex;
+            justify-content: center;
+            align-items:flex-start;
+
+        }
+        &-title{
+            padding: 30px 0px;
+            @extend %text-header;
+        }
+        &-body{
+
+        }
+
+}
+/*-----------------------LOGIN-FORM----------------------*/
+.login-form{
+    &_input{
+        width: 100%;
+        margin:5px 0px 20px 0px;
+    }
+    &_label{
+        color:$label-text-color;
+        @extend %text-input;
+    }
+    &_button{
+        width: 100%;
+        margin: 10px 0px 0px 0px;
+    }  
+}
+/*-----------------------CARDHEADER-----------------------*/
+.cardheader{
+    &-wrapper{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    &_left-side{
+        @extend %text-header;
+
+    }
+    &_right-side{
+        display:flex;
+        justify-content: center;
+        align-items:center;
+    }
+}
+/*-----------------------TASKLIST-----------------------*/
+.tasklist{
+    &-page{
+        &_wrapper{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    &-wrapper{
+        width: 1280px;
+        background-color:$white;
+        margin: auto;
+    }
+    &-body{
+        background-color:$white;
+        @extend %element-shadow;
+        padding: 20px ;
+        height: 642px;
+    }
+    &-filter{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items:flex-start;
+        min-height: 24px;
+        position: relative;
+        &_type{
+            width: 98px;
+        }
+        &_title{
+            width:527px;
+        }
+        &_user{
+            width: 180px;
+            min-height: 24px;
+        }
+        &_status{
+            width: 120px;
+        }
+        &_priority{
+            width: 120px;
+        }
+        &_button{
+            width: 125px;
+        }
+    }
+    &-items{
+        &_container{
+            width: 1240px;
+            height: 510px;
+            top:185px;
+            position:absolute;
+            z-index: 0;
+            overflow: hidden;
+            box-shadow: 0 0 2px 2px $label-text-color;
+            border-radius:5px;
+        }
+        
+    }
+    &-item{
+        height: 24px;
+        @extend %text-regular;  
+        &_container{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: nowrap;
+            background-color:$white;
+            height:64px;
+            &>:not(:last-child){
+                margin-right: 14px;
+            }
+        }
+        &_type{
+            width: 68px;
+            margin-left: 30px;
+            &__task{
+                width: 24px;
+                height: 24px;
+                background-image: url('../icons/type-icon/type-task.png');
+            }
+            &__bug{
+                width: 24px;
+                height: 24px;
+                background-image: url('../icons/type-icon/type-bug.png');
+            }
+        }
+        &_name{
+            width:527px;
+        }
+        &_user{
+            width: 180px;
+            min-height: 24px;
+            overflow: hidden;
+        }
+        &_status{
+            width: 120px;
+            display: flex;
+            align-items:flex-end;
+            justify-content: flex-start;
+            @extend %text-regular;
+            &__default{
+                @include statusColor($text-color,$label-text-color);
+            }
+            &__warning{
+                @include statusColor(#846F00,#FFC700);
+            }
+            &__success{
+                @include statusColor(#157536,#4BD379);
+            }
+            &__danger{
+                @include statusColor(#6D1313,#EB4F4F);
+            }
+        }
+        &_priority{
+            width: 120px;
+            &__low{
+                @include priorityColor(url('../icons/arrows/ar-bot.png'),#3CA961 );
+            }
+            &__medium{
+                @include priorityColor(url('../icons/arrows/ar-mid.png'),#E9B500);
+            }
+            &__high{
+                @include priorityColor(url('../icons/arrows/ar-top.png'),#D14343);
+            }
+        }
+        &_dropdown{
+            width: 116px;
+            margin-right: 10px; 
+        }
+    }
+    &-pagination{
+        &_left{
+
+        }
+        &__right{
+
+        }
+    }
+}
